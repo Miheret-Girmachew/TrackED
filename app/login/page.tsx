@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import Header from '../components/Header';
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>('');
@@ -15,41 +16,36 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen w-full bg-gray-50">
-      <div className="flex items-center space-x-2 px-16 py-4 border-b border-gray-300 shadow-md bg-white">
-        <Image
-          src="/Images/TrackedLogo.svg"
-          alt="logo"
-          width={20}
-          height={20}
-          className="cursor-pointer"
-          priority
-        />
-        <span className="text-lg font-bold text-gray-800">TrackED</span>
-      </div>
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-purple-200">
+      {/* Header */}
+    <Header/>
 
-      <div className="flex flex-grow items-center justify-center w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 bg-white rounded-lg shadow-lg w-full max-w-4xl">
+      {/* Content */}
+      <main className="flex flex-grow items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 bg-white rounded-xl shadow-lg w-full max-w-4xl">
+          {/* Illustration */}
           <div className="hidden md:flex items-center justify-center">
             <Image
-              src="/Images/login.svg" 
+              src="/Images/login.svg"
               alt="Login Illustration"
               width={500}
               height={500}
+              className="animate-fade-in"
             />
           </div>
 
-      
-          <div className="flex flex-col justify-center px-6 py-8 space-y-6 w-full">
+          {/* Login Form */}
+          <div className="flex flex-col justify-center px-6 py-8 space-y-8 w-full">
             <div>
-              <h2 className="text-3xl font-bold">Welcome back!</h2>
-              <p className="text-gray-600">Log in to your account</p>
+              <h2 className="text-4xl font-extrabold text-gray-900">Welcome back!</h2>
+              <p className="text-lg text-gray-600">Log in to your account and continue exploring.</p>
             </div>
 
-            <div className="space-y-4">
+            {/* Form Fields */}
+            <div className="space-y-6">
               <input
                 type="email"
-                placeholder="What is your e-mail?"
+                placeholder="Your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -71,37 +67,34 @@ const LoginPage = () => {
                   {showPassword ? <HiEye size={20} /> : <HiEyeOff size={20} />}
                 </button>
               </div>
-
-              <label htmlFor="userType" className="sr-only">Select Account Type</label>
               <select
-                id="userType"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-              >
-                <option value="Institution">Institution</option>
-                <option value="Employer">Employer</option>
-                <option value="Personal">Personal</option>
-              </select>
+    id="userType"
+    value={type}
+    onChange={(e) => setType(e.target.value)}
+    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+    aria-label="Account Type"
+  >
+    <option value="Institution">Institution</option>
+    <option value="Employer">Employer</option>
+    <option value="Personal">Personal</option>
+  </select>
             </div>
 
-
-
-          
-            <button className="w-full py-2 bg-[#0d0c22] text-white rounded-md hover:bg-blue-700 focus:outline-none">
+            {/* Login Button */}
+            <button className="w-full py-3 bg-black text-white font-bold rounded-md hover:from-purple-500 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-600">
               Login
             </button>
 
-          
+            {/* Signup Link */}
             <p className="text-center text-gray-600">
               Don&apos;t have an account?{' '}
-              <Link href="/signup" className="text-[#efb034] hover:underline">
+              <Link href="/signup" className="text-[#ffc100] font-bold hover:underline">
                 Sign up
               </Link>
             </p>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

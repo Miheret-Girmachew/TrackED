@@ -1,6 +1,7 @@
 "use client";
 import Image from 'next/image';
 import { useState, ChangeEvent, FormEvent } from 'react';
+import Header from '../components/Header';
 
 interface FormData {
   firstName: string;
@@ -50,17 +51,7 @@ export default function Signup() {
   return (
     <div className="flex flex-col min-h-screen w-full bg-gray-50">
       {/* Header */}
-      <div className="flex items-center space-x-2 px-16 py-4 border-b border-gray-300 rounded-b-lg shadow-md bg-white">
-        <Image
-          src="/Images/TrackedLogo.svg"
-          alt="logo"
-          width={20}
-          height={20}
-          className="cursor-pointer"
-          priority
-        />
-        <span className="text-lg font-bold text-gray-800">TrackED</span>
-      </div>
+   <Header/>
 
       <div className="flex flex-grow items-center justify-center w-full">
 
